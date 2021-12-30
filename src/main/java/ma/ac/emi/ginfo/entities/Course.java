@@ -32,6 +32,8 @@ public class Course {
 	
 	@OneToMany
 	private ArrayList<Classroom> courseClassrooms;
+	
+	private ArrayList<Topic> courseTopics;
 
 	public Course() {
 		super();
@@ -53,7 +55,28 @@ public class Course {
 		this.courseOption = courseOption;
 		this.courseProfessor = courseProfessor;
 		this.courseExams = new ArrayList<Exam>();
+		this.courseTopics = new ArrayList<Topic>();
 		this.courseClassrooms = courseClassrooms;
+	}
+
+
+
+
+
+	
+
+	public ArrayList<Topic> getCourseTopics() {
+		return courseTopics;
+	}
+
+
+
+
+
+
+
+	public void setCourseTopics(ArrayList<Topic> courseTopics) {
+		this.courseTopics = courseTopics;
 	}
 
 
