@@ -1,6 +1,6 @@
 package ma.ac.emi.ginfo.entities;
 
-import java.util.ArrayList;
+import java.util.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,13 +23,13 @@ public class Classroom {
 	private Integer classroomLevel;
 	
 	@OneToMany
-	private ArrayList<Student> classroomStudents;
+	private List<Student> classroomStudents;
 	
 	@ManyToMany
-	private ArrayList<Professor> classroomProfessors;
+	private List<Professor> classroomProfessors;
 	
 	@ManyToMany
-	private ArrayList<Course> classroomCourses;
+	private List<Course> classroomCourses;
 
 	public Classroom() {
 		super();
@@ -37,8 +37,8 @@ public class Classroom {
 	}
 
 	public Classroom(String classroomName, String classroomOption, Integer classroomLevel,
-			ArrayList<Student> classroomStudents, ArrayList<Professor> classroomProfessors,
-			ArrayList<Course> classroomCourses) {
+			List<Student> classroomStudents, List<Professor> classroomProfessors,
+			List<Course> classroomCourses) {
 		super();
 		this.classroomName = classroomName;
 		this.classroomOption = classroomOption;
@@ -80,15 +80,23 @@ public class Classroom {
 		this.classroomLevel = classroomLevel;
 	}
 
-	public ArrayList<Student> getClassroomStudents() {
+	public List<Student> getClassroomStudents() {
 		return classroomStudents;
+	}
+
+	public void setClassroomStudents(List<Student> classroomStudents) {
+		this.classroomStudents = classroomStudents;
 	}
 
 	public void setClassroomStudents(ArrayList<Student> classroomStudents) {
 		this.classroomStudents = classroomStudents;
 	}
 
-	public ArrayList<Professor> getClassroomProfessors() {
+	public void setClassroomProfessors(List<Professor> classroomProfessors) {
+		this.classroomProfessors = classroomProfessors;
+	}
+
+	public List<Professor> getClassroomProfessors() {
 		return classroomProfessors;
 	}
 
@@ -96,7 +104,11 @@ public class Classroom {
 		this.classroomProfessors = classroomProfessors;
 	}
 
-	public ArrayList<Course> getClassroomCourses() {
+	public void setClassroomCourses(List<Course> classroomCourses) {
+		this.classroomCourses = classroomCourses;
+	}
+
+	public List<Course> getClassroomCourses() {
 		return classroomCourses;
 	}
 

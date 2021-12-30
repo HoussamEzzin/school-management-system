@@ -2,6 +2,7 @@ package ma.ac.emi.ginfo.entities;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,11 +28,13 @@ public class Professor {
 	
 	private ArrayList<String> professorOptions;
 	
+	private Double professorSalary;
+	
 	@OneToMany
-	private ArrayList<Course> professorCourses;
+	private List<Course> professorCourses;
 	
 	@ManyToMany
-	private ArrayList<Classroom> professorClassrooms;
+	private List<Classroom> professorClassrooms;
 
 	public Professor() {
 		super();
@@ -39,16 +42,25 @@ public class Professor {
 	}
 
 	public Professor(String professorFirstName, String professorLastName, Date professorBirthDay,
-			ArrayList<Integer> professorLevels, ArrayList<String> professorOptions, ArrayList<Course> professorCourses,
-			ArrayList<Classroom> professorClassrooms) {
+			ArrayList<Integer> professorLevels,Double professorSalary) {
 		super();
 		this.professorFirstName = professorFirstName;
 		this.professorLastName = professorLastName;
 		this.professorBirthDay = professorBirthDay;
 		this.professorLevels = professorLevels;
-		this.professorOptions = professorOptions;
-		this.professorCourses = professorCourses;
-		this.professorClassrooms = professorClassrooms;
+		this.professorSalary = professorSalary;
+		this.professorOptions = new ArrayList<String>();
+		this.professorCourses = new ArrayList<Course>();
+		this.professorClassrooms = new ArrayList<Classroom>();
+	}
+	
+
+	public Double getProfessorSalary() {
+		return professorSalary;
+	}
+
+	public void setProfessorSalary(Double professorSalary) {
+		this.professorSalary = professorSalary;
 	}
 
 	public Integer getProfessorId() {
@@ -99,19 +111,28 @@ public class Professor {
 		this.professorOptions = professorOptions;
 	}
 
-	public ArrayList<Course> getProfessorCourses() {
+	public List<Course> getProfessorCourses() {
 		return professorCourses;
+	}
+	
+
+	public void setProfessorCourses(List<Course> professorCourses) {
+		this.professorCourses = professorCourses;
 	}
 
 	public void setProfessorCourses(ArrayList<Course> professorCourses) {
 		this.professorCourses = professorCourses;
 	}
 
-	public ArrayList<Classroom> getProfessorClassrooms() {
+	public List<Classroom> getProfessorClassrooms() {
 		return professorClassrooms;
 	}
 
 	public void setProfessorClassrooms(ArrayList<Classroom> professorClassrooms) {
+		this.professorClassrooms = professorClassrooms;
+	}
+
+	public void setProfessorClassrooms(List<Classroom> professorClassrooms) {
 		this.professorClassrooms = professorClassrooms;
 	}
 	

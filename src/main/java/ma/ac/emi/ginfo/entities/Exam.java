@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Exam {
@@ -20,8 +21,10 @@ public class Exam {
 	
 	private String examOption;
 	
+	@ManyToOne
 	private Professor professor;
 	
+	@ManyToOne
 	private Course course;
 
 	public Exam() {

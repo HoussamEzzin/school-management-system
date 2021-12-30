@@ -1,6 +1,7 @@
 package ma.ac.emi.ginfo.entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,12 +29,13 @@ public class Course {
 	private Professor courseProfessor;
 	
 	@OneToMany
-	private ArrayList<Exam> courseExams;
+	private List<Exam> courseExams;
 	
 	@OneToMany
-	private ArrayList<Classroom> courseClassrooms;
+	private List<Classroom> courseClassrooms;
 	
-	private ArrayList<Topic> courseTopics;
+	@OneToMany
+	private List<Topic> courseTopics;
 
 	public Course() {
 		super();
@@ -47,7 +49,7 @@ public class Course {
 
 
 	public Course(String courseTitle, String courseDescription, Integer courseLevel, String courseOption,
-			Professor courseProfessor, ArrayList<Exam> courseExams, ArrayList<Classroom> courseClassrooms) {
+			Professor courseProfessor) {
 		super();
 		this.courseTitle = courseTitle;
 		this.courseDescription = courseDescription;
@@ -56,6 +58,26 @@ public class Course {
 		this.courseProfessor = courseProfessor;
 		this.courseExams = new ArrayList<Exam>();
 		this.courseTopics = new ArrayList<Topic>();
+		this.courseClassrooms = new ArrayList<Classroom>();
+	}
+
+	
+
+
+
+	
+
+	public void setCourseExams(List<Exam> courseExams) {
+		this.courseExams = courseExams;
+	}
+
+
+
+
+
+
+
+	public void setCourseClassrooms(List<Classroom> courseClassrooms) {
 		this.courseClassrooms = courseClassrooms;
 	}
 
@@ -63,9 +85,19 @@ public class Course {
 
 
 
-	
 
-	public ArrayList<Topic> getCourseTopics() {
+
+	public void setCourseTopics(List<Topic> courseTopics) {
+		this.courseTopics = courseTopics;
+	}
+
+
+
+
+
+
+
+	public List<Topic> getCourseTopics() {
 		return courseTopics;
 	}
 
@@ -133,7 +165,7 @@ public class Course {
 		this.courseProfessor = courseProfessor;
 	}
 
-	public ArrayList<Exam> getCourseExams() {
+	public List<Exam> getCourseExams() {
 		return courseExams;
 	}
 
@@ -147,7 +179,7 @@ public class Course {
 
 
 
-	public ArrayList<Classroom> getCourseClassrooms() {
+	public List<Classroom> getCourseClassrooms() {
 		return courseClassrooms;
 	}
 

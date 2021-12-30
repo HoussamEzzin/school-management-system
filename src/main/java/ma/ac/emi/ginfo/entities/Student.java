@@ -2,11 +2,14 @@ package ma.ac.emi.ginfo.entities;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Student {
@@ -24,7 +27,11 @@ public class Student {
 	
 	private String studentOption;
 	
+	@ManyToOne
+	private Classroom studentClassroom;
 	
+	@OneToMany
+	private List<Course> studentCourses;
 
 	public Student() {
 		super();
@@ -34,13 +41,47 @@ public class Student {
 	
 
 	public Student(String studentFirstName, String studentLastName, Date studentBirthDay, Integer studentLevel,
-			String studentOption) {
+			String studentOption,Classroom studentClassroom, List<Course> studentCourses) {
 		super();
 		this.studentFirstName = studentFirstName;
 		this.studentLastName = studentLastName;
 		this.studentBirthDay = studentBirthDay;
 		this.studentLevel = studentLevel;
 		this.studentOption = studentOption;
+		this.studentClassroom = studentClassroom;
+		this.studentCourses = studentCourses;
+	}
+
+	
+
+	public Classroom getStudentClassroom() {
+		return studentClassroom;
+	}
+
+
+
+	public void setStudentClassroom(Classroom studentClassroom) {
+		this.studentClassroom = studentClassroom;
+	}
+
+
+
+	public List<Course> getStudentCourses() {
+		return studentCourses;
+	}
+	
+	
+
+
+
+	public void setStudentCourses(List<Course> studentCourses) {
+		this.studentCourses = studentCourses;
+	}
+
+
+
+	public void setStudentCourses(ArrayList<Course> studentCourses) {
+		this.studentCourses = studentCourses;
 	}
 
 
