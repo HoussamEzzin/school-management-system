@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ma.ac.emi.ginfo.entities.Course;
 import ma.ac.emi.ginfo.entities.Professor;
 import ma.ac.emi.ginfo.service.CourseService;
+import ma.ac.emi.ginfo.service.ProfessorService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -19,7 +20,7 @@ public class CourseController {
 	CourseService courseService;
 	
 	@Autowired
-	
+	ProfessorService professorService;
 	
 	@GetMapping("/hello")
 	public String hello() {
@@ -33,6 +34,6 @@ public class CourseController {
 	
 	@GetMapping("/professors")
 	public List<Professor> showAllProfessors(){
-		return profe
+		return professorService.getAllProfessors();
 	}
 }
